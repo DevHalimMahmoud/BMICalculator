@@ -110,7 +110,7 @@ fun GenderScreenContent(navController: NavController) {
                 shape = RoundedCornerShape(50), // = 50% percent
                 //or shape = CircleShape
                 colors = ButtonDefaults.outlinedButtonColors(contentColor = Color(0xFF54c7f5)),
-                onClick = { navController.navigate("friends") },
+                onClick = { navController.navigate("weight_height_screen") },
                 modifier = Modifier
                     .weight(0.5f)
                     .padding(8.dp)
@@ -124,7 +124,7 @@ fun GenderScreenContent(navController: NavController) {
                 shape = RoundedCornerShape(50), // = 50% percent
                 //or shape = CircleShape
                 colors = ButtonDefaults.outlinedButtonColors(contentColor = Color(0xFFe53671)),
-                onClick = { navController.navigate("friends") },
+                onClick = { navController.navigate("weight_height_screen") },
                 modifier = Modifier
                     .weight(0.5f)
                     .padding(8.dp)
@@ -159,5 +159,5 @@ fun GenderScreenContent(navController: NavController) {
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
-        GenderScreen(navController = rememberNavController())
+    GenderScreen(navController = rememberNavController())
 }
