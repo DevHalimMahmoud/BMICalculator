@@ -11,6 +11,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.bmicalculator.ui.screens.GenderScreen
 import com.example.bmicalculator.ui.screens.SplashScreen
 import com.example.bmicalculator.ui.screens.WeightHeightScreen
+import com.example.bmicalculator.ui.screens.WeightHeightScreenContent
 
 
 class MainActivity : ComponentActivity() {

@@ -1,9 +1,9 @@
 package com.example.bmicalculator.ui.screens
 
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Slider
-import androidx.compose.material.SliderDefaults
-import androidx.compose.material.Text
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Remove
@@ -21,21 +21,49 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavHostController
+import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.bmicalculator.ui.theme.AppTheme
-import com.example.bmicalculator.ui.theme.accentColor
 import com.example.bmicalculator.ui.widgets.RoundIconButton
 import com.example.bmicalculator.ui.widgets.RoundedButton
 import com.example.bmicalculator.ui.widgets.RoundedCard
 import com.example.bmicalculator.ui.widgets.textStyle
 
 @Composable
-fun WeightHeightScreen(navController: NavHostController) {
+fun WeightHeightScreen(navController: NavController) {
+    /*...*/
+    Scaffold(
+        modifier = Modifier
+            .fillMaxWidth()
+            .fillMaxHeight(),
+
+
+        topBar = {
+            Text(
+                text = "Your height & weight",
+                style = MaterialTheme.typography.h4,
+                color = LocalContentColor.current,
+                modifier = Modifier.padding(start = 16.dp, top = 16.dp, end = 16.dp),
+
+
+                )
+        },
+        content = {
+            WeightHeightScreenContent(navController)
+
+        }
+    )
+}
+
+
+@Composable
+fun WeightHeightScreenContent(navController: NavController) {
     Column(
+
         modifier = Modifier
             .padding(16.dp)
-            .fillMaxSize(),
+            .fillMaxSize()
+            .verticalScroll(rememberScrollState()),
         verticalArrangement = Arrangement.SpaceAround
     ) {
 
@@ -62,7 +90,7 @@ fun WeightHeightScreen(navController: NavHostController) {
             },
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(top = 16.dp)
+                .padding( 16.dp)
         )
     }
 }
@@ -145,7 +173,8 @@ private fun HeightSelector(
                     .padding(8.dp),
                 valueRange = (1f..272f),
                 colors = SliderDefaults.colors(
-                    activeTrackColor = accentColor
+                    activeTrackColor = Color(0xFFe53671),
+                    thumbColor = Color.Black
                 )
             )
             Text(
@@ -217,5 +246,6 @@ private val ValueStyle = TextStyle(
     fontSize = 32.sp
 )
 
-private val ColumnChildModifier = Modifier.padding(8.dp)    //.gravity(Alignment.CenterHorizontally)
+private val ColumnChildModifier = Modifier.padding(8.dp)
+
 

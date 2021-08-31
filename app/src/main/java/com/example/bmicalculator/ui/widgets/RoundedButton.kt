@@ -1,7 +1,9 @@
 package com.example.bmicalculator.ui.widgets
 
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
@@ -29,15 +31,14 @@ fun RoundedButton(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     elevation: Dp = 4.dp,
-    backGroundColor: Color = accentColor,
-    contentColor: Color = foregroundColor
+    contentColor: Color = Color.White
 ) {
     Button(
         onClick = onClick,
         shape = RoundedCornerShape(16.dp),
         modifier = modifier then IconButtonSizeModifier,
         colors = ButtonDefaults.buttonColors(
-            backgroundColor = backGroundColor,
+            backgroundColor = Color(0xFFe53671),
             contentColor = contentColor
         ),
         elevation = ButtonDefaults.elevation(elevation)
@@ -48,20 +49,19 @@ fun RoundedButton(
 
 @Composable
 fun RoundedToggleButton(
-    state: MutableState<Boolean>,
     text: String,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
-    activeColor: Color = accentColor,
-    inactiveColor: Color = backgroundColor
+
 ) {
     Button(
         onClick = onClick,
         shape = RoundedCornerShape(16.dp),
         modifier = modifier then IconButtonSizeModifier,
         colors = ButtonDefaults.buttonColors(
-            backgroundColor = if (state.value) activeColor else inactiveColor,
-            contentColor = if (state.value) foregroundColor else Color.Gray
+            backgroundColor =Color.White ,
+
+            contentColor = Color.Black
         )
     ) {
         Text(text = text, fontSize = 18.sp)
@@ -80,12 +80,12 @@ private fun ButtonPreview() {
 @Composable
 private fun ToggleButtonPreview() {
     AppTheme {
-        val trueState = mutableStateOf(true)
-        val falseState = mutableStateOf(false)
         Row {
-            RoundedToggleButton(state = trueState, text = "True", onClick = {})
+            RoundedToggleButton( text = "True", onClick = {})
             EmptyWidth()
-            RoundedToggleButton(state = falseState, text = "False", onClick = {})
+            RoundedToggleButton( text = "False", onClick = {})
         }
     }
 }
+@Composable
+fun EmptyWidth() = Spacer(Modifier.width(16.dp))

@@ -6,7 +6,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.Card
 import androidx.compose.material.Icon
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Notifications
 import androidx.compose.runtime.Composable
@@ -18,7 +17,6 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.example.bmicalculator.ui.theme.AppTheme
 
-private val RippleRadius = 24.dp
 private val IconButtonSizeModifier = Modifier.size(40.dp)
 
 @Composable
@@ -26,8 +24,7 @@ fun RoundIconButton(
     imageVector: ImageVector,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
-    tint: Color = Color.Black.copy(alpha = 0.8f),
-    backgroundColor: Color = MaterialTheme.colors.background,
+    backgroundColor: Color = Color.White,
     elevation: Dp = 4.dp
 ) {
     Card(
@@ -36,13 +33,15 @@ fun RoundIconButton(
             .then(IconButtonSizeModifier),
         shape = CircleShape,
         backgroundColor = backgroundColor,
-        elevation = elevation
+        elevation = elevation,
+        contentColor = Color.Black
     ) {
-        Icon(imageVector, null, tint = tint)
+        Icon(imageVector, null, tint = Color.Black)
     }
 }
 
 @Preview
+
 @Composable
 private fun RoundIconPreview() {
     AppTheme {
