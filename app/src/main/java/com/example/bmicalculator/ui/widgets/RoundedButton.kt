@@ -9,8 +9,6 @@ import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
@@ -18,9 +16,6 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.bmicalculator.ui.theme.AppTheme
-import com.example.bmicalculator.ui.theme.accentColor
-import com.example.bmicalculator.ui.theme.backgroundColor
-import com.example.bmicalculator.ui.theme.foregroundColor
 
 
 private val IconButtonSizeModifier = Modifier.height(50.dp)
@@ -53,16 +48,16 @@ fun RoundedToggleButton(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
 
-) {
+    ) {
     Button(
         onClick = onClick,
         shape = RoundedCornerShape(16.dp),
         modifier = modifier then IconButtonSizeModifier,
         colors = ButtonDefaults.buttonColors(
-            backgroundColor =Color.White ,
-
+            backgroundColor = Color.White,
             contentColor = Color.Black
-        )
+        ),
+
     ) {
         Text(text = text, fontSize = 18.sp)
     }
@@ -81,11 +76,12 @@ private fun ButtonPreview() {
 private fun ToggleButtonPreview() {
     AppTheme {
         Row {
-            RoundedToggleButton( text = "True", onClick = {})
+            RoundedToggleButton(text = "True", onClick = {})
             EmptyWidth()
-            RoundedToggleButton( text = "False", onClick = {})
+            RoundedToggleButton(text = "False", onClick = {})
         }
     }
 }
+
 @Composable
 fun EmptyWidth() = Spacer(Modifier.width(16.dp))

@@ -12,6 +12,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.semantics.heading
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.tooling.preview.Preview
@@ -35,7 +37,6 @@ fun GenderScreen(navController: NavController) {
                 style = MaterialTheme.typography.h4,
                 color = LocalContentColor.current,
                 modifier = Modifier.padding(start = 16.dp, top = 16.dp, end = 16.dp),
-
 
                 )
         },
@@ -73,16 +74,17 @@ fun GenderScreenContent(navController: NavController) {
 
             Image(
                 painter = painterResource(id = com.example.bmicalculator.R.drawable.male),
-                contentDescription = null // decorative element
+                contentDescription = "man image" // decorative element
                 ,
                 Modifier
                     .height(250.dp)
                     .width(150.dp)
-                    .weight(0.5F)
+                    .weight(0.5F),
+
             )
             Image(
                 painter = painterResource(id = com.example.bmicalculator.R.drawable.female),
-                contentDescription = null // decorative element
+                contentDescription = "women image" // decorative element
                 ,
                 Modifier
                     .height(250.dp)
@@ -127,11 +129,13 @@ fun GenderScreenContent(navController: NavController) {
                 onClick = { navController.navigate("weight_height_screen") },
                 modifier = Modifier
                     .weight(0.5f)
-                    .padding(8.dp)
+                    .padding(8.dp),
+
 
             ) {
 
                 Text(text = "Female")
+
             }
 
 
@@ -139,13 +143,14 @@ fun GenderScreenContent(navController: NavController) {
 
         Row {
             Text(
-                text = "BMI centile is sex specific. For both children and adults, we give more personalised information based on whether you are male or female.",
+                text = "BMI Centile is sex specific. For both children and adults, we give more personalised information based on whether you are male or female.",
                 style = TextStyle(
                     color = Color.DarkGray,
                     fontSize = 14.sp,
                     fontFamily = FontFamily.SansSerif
                 ),
-                modifier = Modifier.padding(top = 16.dp)
+                modifier = Modifier.padding(top = 16.dp).semantics { heading() },
+
             )
 
 
