@@ -74,14 +74,13 @@ fun GenderScreenContent(navController: NavController) {
 
             Image(
                 painter = painterResource(id = com.example.bmicalculator.R.drawable.male),
-                contentDescription = "man image" // decorative element
-                ,
+                contentDescription = "man image", // decorative element
                 Modifier
                     .height(250.dp)
                     .width(150.dp)
                     .weight(0.5F),
 
-            )
+                )
             Image(
                 painter = painterResource(id = com.example.bmicalculator.R.drawable.female),
                 contentDescription = "women image" // decorative element
@@ -132,7 +131,7 @@ fun GenderScreenContent(navController: NavController) {
                     .padding(8.dp),
 
 
-            ) {
+                ) {
 
                 Text(text = "Female")
 
@@ -149,9 +148,11 @@ fun GenderScreenContent(navController: NavController) {
                     fontSize = 14.sp,
                     fontFamily = FontFamily.SansSerif
                 ),
-                modifier = Modifier.padding(top = 16.dp).semantics { heading() },
+                modifier = Modifier
+                    .padding(top = 16.dp)
+                    .semantics { heading() },
 
-            )
+                )
 
 
         }

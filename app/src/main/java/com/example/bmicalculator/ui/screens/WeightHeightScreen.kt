@@ -1,11 +1,16 @@
 package com.example.bmicalculator.ui.screens
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material.icons.filled.Remove
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
@@ -25,7 +30,6 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.bmicalculator.ui.theme.AppTheme
 import com.example.bmicalculator.ui.widgets.RoundIconButton
-import com.example.bmicalculator.ui.widgets.RoundedButton
 import com.example.bmicalculator.ui.widgets.RoundedCard
 import com.example.bmicalculator.ui.widgets.textStyle
 
@@ -39,14 +43,46 @@ fun WeightHeightScreen(navController: NavController) {
 
 
         topBar = {
-            Text(
-                text = "Your height & weight",
-                style = MaterialTheme.typography.h4,
-                color = LocalContentColor.current,
-                modifier = Modifier.padding(start = 16.dp, top = 16.dp, end = 16.dp),
+            Row(
+                modifier = Modifier.padding(start = 8.dp, top = 16.dp, end = 16.dp),
+                horizontalArrangement = Arrangement.SpaceEvenly,
+                verticalAlignment = Alignment.CenterVertically
+
+
+            ) {
+                IconButton(
+                    onClick = {
+                        navController.navigate("gender_screen") {
+                            popUpTo("weight_height_screen") {
+                                inclusive = true
+
+                            }
+                        }
+                        navController.popBackStack()
+                    },
+
+
+                    ) {
+                    Icon(
+                        Icons.Filled.ArrowBack,
+                        contentDescription = "Refresh Button",
+                        modifier = Modifier.background(Color.Transparent)
+                    )
+                }
+
+
+                Text(
+                    text = "Your height & weight",
+                    style = MaterialTheme.typography.h5,
+                    color = LocalContentColor.current,
+                    modifier = Modifier
+                        .padding(start = 8.dp, end = 8.dp)
 
 
                 )
+            }
+
+
         },
         content = {
             WeightHeightScreenContent(navController)
@@ -79,19 +115,28 @@ fun WeightHeightScreenContent(navController: NavController) {
             weightState = weightState,
             ageState = ageState
         )
-        RoundedButton(
-            text = "Lets Begin",
-            onClick = {
-//                val bmi = BmiCalculator(
-//                    heightState.value,
-//                    weightState.value
-//                )
-//                navigateTo(Screen.Result(bmi))
-            },
+
+        Card(
             modifier = Modifier
-                .fillMaxWidth()
-                .padding( 16.dp)
-        )
+                .padding(all = 16.dp)
+                .clickable(onClick = {})
+                .size(70.dp)
+                .align(Alignment.CenterHorizontally),
+
+            backgroundColor = Color(0xFFe53671),
+
+            shape = CircleShape
+
+        ) {
+            Icon(
+                Icons.Filled.ArrowForward,
+                contentDescription = "Refresh Button",
+                tint = Color.White,
+                modifier = Modifier.padding(8.dp)
+
+            )
+        }
+
     }
 }
 
