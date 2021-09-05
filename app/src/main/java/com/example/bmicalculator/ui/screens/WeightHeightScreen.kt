@@ -32,10 +32,13 @@ import com.example.bmicalculator.ui.theme.AppTheme
 import com.example.bmicalculator.ui.widgets.RoundIconButton
 import com.example.bmicalculator.ui.widgets.RoundedCard
 import com.example.bmicalculator.ui.widgets.textStyle
+import com.example.bmicalculator.util.BMICalculator
+
 
 @Composable
 fun WeightHeightScreen(navController: NavController) {
-    /*...*/
+
+
     Scaffold(
         modifier = Modifier
             .fillMaxWidth()
@@ -65,7 +68,7 @@ fun WeightHeightScreen(navController: NavController) {
                     ) {
                     Icon(
                         Icons.Filled.ArrowBack,
-                        contentDescription = "Refresh Button",
+                        contentDescription = "Back Button",
                         modifier = Modifier.background(Color.Transparent)
                     )
                 }
@@ -93,7 +96,7 @@ fun WeightHeightScreen(navController: NavController) {
 
 
 @Composable
-fun WeightHeightScreenContent(navController: NavController) {
+private fun WeightHeightScreenContent(navController: NavController) {
     Column(
 
         modifier = Modifier
@@ -103,9 +106,9 @@ fun WeightHeightScreenContent(navController: NavController) {
         verticalArrangement = Arrangement.SpaceAround
     ) {
 
-        val heightState = remember { mutableStateOf(170) }
-        val weightState: MutableState<Int> = remember { mutableStateOf(62) }
-        val ageState: MutableState<Int> = remember { mutableStateOf(20) }
+        val heightState = remember { mutableStateOf(BMICalculator.height) }
+        val weightState: MutableState<Int> = remember { mutableStateOf(BMICalculator.weight) }
+        val ageState: MutableState<Int> = remember { mutableStateOf(BMICalculator.age) }
         PickerView(
             modifier = Modifier
                 .weight(1f)
@@ -121,7 +124,15 @@ fun WeightHeightScreenContent(navController: NavController) {
                 .padding(all = 16.dp)
                 .clickable(onClick = {})
                 .size(70.dp)
-                .align(Alignment.CenterHorizontally),
+                .align(Alignment.CenterHorizontally)
+                .clickable(onClick = {
+                    BMICalculator.weight = weightState.value
+                    BMICalculator.height = heightState.value
+                    BMICalculator.age = ageState.value
+                    BMICalculator.CalculateBMI()
+                    navController.navigate("info_screen")
+
+                }),
 
             backgroundColor = Color(0xFFe53671),
 
@@ -130,7 +141,7 @@ fun WeightHeightScreenContent(navController: NavController) {
         ) {
             Icon(
                 Icons.Filled.ArrowForward,
-                contentDescription = "Refresh Button",
+                contentDescription = "Next Button",
                 tint = Color.White,
                 modifier = Modifier.padding(8.dp)
 
@@ -272,6 +283,7 @@ private fun NumberPicker(
         }
     }
 }
+
 
 @Preview
 @Composable

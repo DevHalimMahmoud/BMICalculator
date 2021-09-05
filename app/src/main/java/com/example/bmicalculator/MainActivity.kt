@@ -9,9 +9,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.bmicalculator.ui.screens.GenderScreen
+import com.example.bmicalculator.ui.screens.InfoScreen
 import com.example.bmicalculator.ui.screens.SplashScreen
 import com.example.bmicalculator.ui.screens.WeightHeightScreen
-import com.example.bmicalculator.ui.screens.WeightHeightScreenContent
 
 
 class MainActivity : ComponentActivity() {
@@ -24,6 +24,7 @@ class MainActivity : ComponentActivity() {
                 composable("gender_screen") { GenderScreen(navController) }
                 composable("splash_screen") { SplashScreen(navController) }
                 composable("weight_height_screen") { WeightHeightScreen(navController) }
+                composable("info_screen") { InfoScreen(navController) }
             }
 
         }

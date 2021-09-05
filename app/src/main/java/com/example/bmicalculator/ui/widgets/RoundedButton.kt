@@ -58,7 +58,7 @@ fun RoundedToggleButton(
             contentColor = Color.Black
         ),
 
-    ) {
+        ) {
         Text(text = text, fontSize = 18.sp)
     }
 }

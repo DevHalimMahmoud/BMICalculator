@@ -21,6 +21,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.example.bmicalculator.util.BMICalculator
 
 
 @Composable
@@ -125,7 +126,10 @@ fun GenderScreenContent(navController: NavController) {
                 shape = RoundedCornerShape(50), // = 50% percent
                 //or shape = CircleShape
                 colors = ButtonDefaults.outlinedButtonColors(contentColor = Color(0xFFe53671)),
-                onClick = { navController.navigate("weight_height_screen") },
+                onClick = {
+                    navController.navigate("weight_height_screen")
+                    BMICalculator.gender = "female"
+                },
                 modifier = Modifier
                     .weight(0.5f)
                     .padding(8.dp),
